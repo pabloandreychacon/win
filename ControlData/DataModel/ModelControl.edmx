@@ -1,0 +1,1439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ControlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bancos">
+          <Key>
+            <PropertyRef Name="IdBanco" />
+          </Key>
+          <Property Name="IdBanco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apartado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cuenta" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tarjetas">
+          <Key>
+            <PropertyRef Name="IdTarjeta" />
+          </Key>
+          <Property Name="IdTarjeta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="50" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contado" Type="bit" Nullable="false" />
+          <Property Name="MontoMaximo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IdFrecuenciaPago" Type="int" />
+        </EntityType>
+        <EntityType Name="Creditos">
+          <Key>
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCredito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="IdLinea" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tasa" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Cuota" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Plazo" Type="int" Nullable="false" />
+          <Property Name="MontoInicial" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SaldoActual" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="FechaFinal" Type="datetime2" Precision="7" />
+          <Property Name="FechaProximoPago" Type="datetime2" Precision="7" />
+          <Property Name="FechaUltimoPago" Type="datetime2" Precision="7" />
+          <Property Name="FechaUltimoAbono" Type="datetime2" Precision="7" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Consecutivo" Type="int" Nullable="false" />
+          <Property Name="Referencia" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FrecuenciasPago">
+          <Key>
+            <PropertyRef Name="IdFrecuenciaPago" />
+          </Key>
+          <Property Name="IdFrecuenciaPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiasPorYear" Type="int" Nullable="false" />
+          <Property Name="DiasPorPeriodo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LineasCredito">
+          <Key>
+            <PropertyRef Name="IdLineaCredito" />
+          </Key>
+          <Property Name="IdLineaCredito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activa" Type="bit" Nullable="false" />
+          <Property Name="Consecutivo" Type="int" Nullable="false" />
+          <Property Name="Tasa" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="TasaMora" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="DiasMora" Type="int" Nullable="false" />
+          <Property Name="Plazo" Type="int" Nullable="false" />
+          <Property Name="Refunde" Type="bit" Nullable="false" />
+          <Property Name="Cuotas" Type="int" Nullable="false" />
+          <Property Name="MontoMaximo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PlazoMaximo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="IdBitacora" />
+          </Key>
+          <Property Name="IdBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Fecha" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Error" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NumericTypes">
+          <Key>
+            <PropertyRef Name="int" />
+          </Key>
+          <Property Name="int" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numeric" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="decimal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="float" Type="float" />
+          <Property Name="money" Type="money" />
+          <Property Name="real" Type="real" />
+          <Property Name="numericN" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="decimalN" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="floatN" Type="float" Nullable="false" />
+          <Property Name="moneyN" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParametrosGeneral">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Name="IdParametro" Type="int" Nullable="false" />
+          <Property Name="Redondeo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Administrador" Type="bit" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Mantenimientos" Type="bit" Nullable="false" />
+          <Property Name="Procesos" Type="bit" Nullable="false" />
+          <Property Name="Reportes" Type="bit" Nullable="false" />
+          <Property Name="Otros" Type="bit" Nullable="false" />
+          <Property Name="Consultas" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Existencias">
+          <Key>
+            <PropertyRef Name="IdExistencia" />
+          </Key>
+          <Property Name="IdExistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PrecioVenta" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="Minimo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Impuestos" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="IdUnidadMedida" Type="int" Nullable="false" />
+          <Property Name="VerificaDisponible" Type="bit" Nullable="false" />
+          <Property Name="Descuento" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Utilidad" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnidadesMedida">
+          <Key>
+            <PropertyRef Name="IdUnidadMedida" />
+          </Key>
+          <Property Name="IdUnidadMedida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreCorto" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cajas">
+          <Key>
+            <PropertyRef Name="IdCaja" />
+          </Key>
+          <Property Name="IdCaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Disponible" Type="bit" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Consecutivo" Type="int" Nullable="false" />
+          <Property Name="UsaConsecutivoGlobal" Type="bit" Nullable="false" />
+          <Property Name="GuardadoAutomatico" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleVentas">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdVenta" Type="int" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Impuestos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Descuento" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalLinea" Type="decimal" Precision="38" Scale="4" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Pagos">
+          <Key>
+            <PropertyRef Name="IdPago" />
+          </Key>
+          <Property Name="IdPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsecutivoVentas" Type="int" Nullable="false" />
+          <Property Name="IdCaja" Type="int" Nullable="false" />
+          <Property Name="FormaPago" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdLinea" Type="int" Nullable="false" />
+          <Property Name="IdBanco" Type="int" Nullable="false" />
+          <Property Name="IdTarjeta" Type="int" Nullable="false" />
+          <Property Name="NumeroChequeTarjeta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MontoRecibido" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MontoAplicado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PagosCajas">
+          <Key>
+            <PropertyRef Name="IdPagoCaja" />
+          </Key>
+          <Property Name="IdCaja" Type="int" Nullable="false" />
+          <Property Name="FormaPago" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdPagoCaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParametrosVentas">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Name="IdParametro" Type="int" Nullable="false" />
+          <Property Name="ConsecutivoGlobalFacturas" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SaldoCajas">
+          <Key>
+            <PropertyRef Name="IdSaldoCaja" />
+          </Key>
+          <Property Name="IdSaldoCaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCaja" Type="int" Nullable="false" />
+          <Property Name="SaldoEfectivo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SaldoDocumentos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MontoInicial" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Consecutivo" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="TotalVenta" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IdCaja" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="TotalImpuestos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalDescuentos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cajas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Cajas" Type="Self.Cajas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Cajas">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clientes_FrecuenciasPago">
+          <End Role="FrecuenciasPago" Type="Self.FrecuenciasPago" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FrecuenciasPago">
+              <PropertyRef Name="IdFrecuenciaPago" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="IdFrecuenciaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creditos_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Creditos" Type="Self.Creditos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Creditos">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creditos_LineasCredito">
+          <End Role="LineasCredito" Type="Self.LineasCredito" Multiplicity="1" />
+          <End Role="Creditos" Type="Self.Creditos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LineasCredito">
+              <PropertyRef Name="IdLineaCredito" />
+            </Principal>
+            <Dependent Role="Creditos">
+              <PropertyRef Name="IdLinea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creditos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Creditos" Type="Self.Creditos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Creditos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleVentas_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="DetalleVentas" Type="Self.DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DetalleVentas">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleVentas_Ventas">
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="1" />
+          <End Role="DetalleVentas" Type="Self.DetalleVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ventas">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="DetalleVentas">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Existencias_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Existencias" Type="Self.Existencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Existencias">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagosCajas_Cajas">
+          <End Role="Cajas" Type="Self.Cajas" Multiplicity="1" />
+          <End Role="PagosCajas" Type="Self.PagosCajas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cajas">
+              <PropertyRef Name="IdCaja" />
+            </Principal>
+            <Dependent Role="PagosCajas">
+              <PropertyRef Name="IdCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Categorias">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_UnidadesMedida">
+          <End Role="UnidadesMedida" Type="Self.UnidadesMedida" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadesMedida">
+              <PropertyRef Name="IdUnidadMedida" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="IdUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaldoCajas_Cajas">
+          <End Role="Cajas" Type="Self.Cajas" Multiplicity="1" />
+          <End Role="SaldoCajas" Type="Self.SaldoCajas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cajas">
+              <PropertyRef Name="IdCaja" />
+            </Principal>
+            <Dependent Role="SaldoCajas">
+              <PropertyRef Name="IdCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ventas_Cajas">
+          <End Role="Cajas" Type="Self.Cajas" Multiplicity="1" />
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cajas">
+              <PropertyRef Name="IdCaja" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="IdCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ventas_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ventas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ControlModelStoreContainer">
+          <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="Bancos" store:Type="Tables" />
+          <EntitySet Name="Tarjetas" EntityType="Self.Tarjetas" Schema="Bancos" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="Credito" store:Type="Tables" />
+          <EntitySet Name="Creditos" EntityType="Self.Creditos" Schema="Credito" store:Type="Tables" />
+          <EntitySet Name="FrecuenciasPago" EntityType="Self.FrecuenciasPago" Schema="Credito" store:Type="Tables" />
+          <EntitySet Name="LineasCredito" EntityType="Self.LineasCredito" Schema="Credito" store:Type="Tables" />
+          <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="General" store:Type="Tables" />
+          <EntitySet Name="NumericTypes" EntityType="Self.NumericTypes" Schema="General" store:Type="Tables" />
+          <EntitySet Name="ParametrosGeneral" EntityType="Self.ParametrosGeneral" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="Inventario" store:Type="Tables" />
+          <EntitySet Name="Existencias" EntityType="Self.Existencias" Schema="Inventario" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="Inventario" store:Type="Tables" />
+          <EntitySet Name="UnidadesMedida" EntityType="Self.UnidadesMedida" Schema="Inventario" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="Proveedores" store:Type="Tables" />
+          <EntitySet Name="Cajas" EntityType="Self.Cajas" Schema="Ventas" store:Type="Tables" />
+          <EntitySet Name="DetalleVentas" EntityType="Self.DetalleVentas" Schema="Ventas" store:Type="Tables" />
+          <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="Ventas" store:Type="Tables" />
+          <EntitySet Name="PagosCajas" EntityType="Self.PagosCajas" Schema="Ventas" store:Type="Tables" />
+          <EntitySet Name="ParametrosVentas" EntityType="Self.ParametrosVentas" Schema="Ventas" store:Type="Tables" />
+          <EntitySet Name="SaldoCajas" EntityType="Self.SaldoCajas" Schema="Ventas" store:Type="Tables" />
+          <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="Ventas" store:Type="Tables" />
+          <AssociationSet Name="FK_Cajas_Usuarios" Association="Self.FK_Cajas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Cajas" EntitySet="Cajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clientes_FrecuenciasPago" Association="Self.FK_Clientes_FrecuenciasPago">
+            <End Role="FrecuenciasPago" EntitySet="FrecuenciasPago" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creditos_Clientes" Association="Self.FK_Creditos_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Creditos" EntitySet="Creditos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creditos_LineasCredito" Association="Self.FK_Creditos_LineasCredito">
+            <End Role="LineasCredito" EntitySet="LineasCredito" />
+            <End Role="Creditos" EntitySet="Creditos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creditos_Usuarios" Association="Self.FK_Creditos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Creditos" EntitySet="Creditos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVentas_Productos" Association="Self.FK_DetalleVentas_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="DetalleVentas" EntitySet="DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVentas_Ventas" Association="Self.FK_DetalleVentas_Ventas">
+            <End Role="Ventas" EntitySet="Ventas" />
+            <End Role="DetalleVentas" EntitySet="DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Existencias_Productos" Association="Self.FK_Existencias_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Existencias" EntitySet="Existencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagosCajas_Cajas" Association="Self.FK_PagosCajas_Cajas">
+            <End Role="Cajas" EntitySet="Cajas" />
+            <End Role="PagosCajas" EntitySet="PagosCajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Categorias" Association="Self.FK_Productos_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Proveedores" Association="Self.FK_Productos_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_UnidadesMedida" Association="Self.FK_Productos_UnidadesMedida">
+            <End Role="UnidadesMedida" EntitySet="UnidadesMedida" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaldoCajas_Cajas" Association="Self.FK_SaldoCajas_Cajas">
+            <End Role="Cajas" EntitySet="Cajas" />
+            <End Role="SaldoCajas" EntitySet="SaldoCajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ventas_Cajas" Association="Self.FK_Ventas_Cajas">
+            <End Role="Cajas" EntitySet="Cajas" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ventas_Clientes" Association="Self.FK_Ventas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ventas_Usuarios" Association="Self.FK_Ventas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ControlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="IdBanco" />
+          </Key>
+          <Property Name="IdBanco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apartado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tarjeta">
+          <Key>
+            <PropertyRef Name="IdTarjeta" />
+          </Key>
+          <Property Name="IdTarjeta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contado" Type="Boolean" Nullable="false" />
+          <Property Name="MontoMaximo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="IdFrecuenciaPago" Type="Int32" />
+          <NavigationProperty Name="FrecuenciasPago" Relationship="Self.FK_Clientes_FrecuenciasPago" FromRole="Clientes" ToRole="FrecuenciasPago" />
+          <NavigationProperty Name="Creditos" Relationship="Self.FK_Creditos_Clientes" FromRole="Clientes" ToRole="Creditos" />
+          <NavigationProperty Name="Ventas" Relationship="Self.FK_Ventas_Clientes" FromRole="Clientes" ToRole="Ventas" />
+        </EntityType>
+        <EntityType Name="Credito">
+          <Key>
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCredito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tasa" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Cuota" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Plazo" Type="Int32" Nullable="false" />
+          <Property Name="MontoInicial" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SaldoActual" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="FechaFinal" Type="DateTime" Precision="7" />
+          <Property Name="FechaProximoPago" Type="DateTime" Precision="7" />
+          <Property Name="FechaUltimoPago" Type="DateTime" Precision="7" />
+          <Property Name="FechaUltimoAbono" Type="DateTime" Precision="7" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Consecutivo" Type="Int32" Nullable="false" />
+          <Property Name="Referencia" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Creditos_Clientes" FromRole="Creditos" ToRole="Clientes" />
+          <NavigationProperty Name="LineasCredito" Relationship="Self.FK_Creditos_LineasCredito" FromRole="Creditos" ToRole="LineasCredito" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Creditos_Usuarios" FromRole="Creditos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="FrecuenciasPago">
+          <Key>
+            <PropertyRef Name="IdFrecuenciaPago" />
+          </Key>
+          <Property Name="IdFrecuenciaPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiasPorYear" Type="Int32" Nullable="false" />
+          <Property Name="DiasPorPeriodo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Clientes_FrecuenciasPago" FromRole="FrecuenciasPago" ToRole="Clientes" />
+        </EntityType>
+        <EntityType Name="LineasCredito">
+          <Key>
+            <PropertyRef Name="IdLineaCredito" />
+          </Key>
+          <Property Name="IdLineaCredito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activa" Type="Boolean" Nullable="false" />
+          <Property Name="Consecutivo" Type="Int32" Nullable="false" />
+          <Property Name="Tasa" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="TasaMora" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="DiasMora" Type="Int32" Nullable="false" />
+          <Property Name="Plazo" Type="Int32" Nullable="false" />
+          <Property Name="Refunde" Type="Boolean" Nullable="false" />
+          <Property Name="Cuotas" Type="Int32" Nullable="false" />
+          <Property Name="MontoMaximo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PlazoMaximo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Creditos" Relationship="Self.FK_Creditos_LineasCredito" FromRole="LineasCredito" ToRole="Creditos" />
+        </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="IdBitacora" />
+          </Key>
+          <Property Name="IdBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Error" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NumericType">
+          <Key>
+            <PropertyRef Name="int" />
+          </Key>
+          <Property Name="int" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numeric" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="decimal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="float" Type="Double" />
+          <Property Name="money" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="real" Type="Single" />
+          <Property Name="numericN" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="decimalN" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="floatN" Type="Double" Nullable="false" />
+          <Property Name="moneyN" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParametrosGeneral">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Name="IdParametro" Type="Int32" Nullable="false" />
+          <Property Name="Redondeo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Administrador" Type="Boolean" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Mantenimientos" Type="Boolean" Nullable="false" />
+          <Property Name="Procesos" Type="Boolean" Nullable="false" />
+          <Property Name="Reportes" Type="Boolean" Nullable="false" />
+          <Property Name="Otros" Type="Boolean" Nullable="false" />
+          <Property Name="Consultas" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Creditos" Relationship="Self.FK_Creditos_Usuarios" FromRole="Usuarios" ToRole="Creditos" />
+          <NavigationProperty Name="Cajas" Relationship="Self.FK_Cajas_Usuarios" FromRole="Usuarios" ToRole="Cajas" />
+          <NavigationProperty Name="Ventas" Relationship="Self.FK_Ventas_Usuarios" FromRole="Usuarios" ToRole="Ventas" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Categorias" FromRole="Categorias" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Existencia">
+          <Key>
+            <PropertyRef Name="IdExistencia" />
+          </Key>
+          <Property Name="IdExistencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Existencias_Productos" FromRole="Existencias" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PrecioVenta" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="Minimo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Impuestos" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="IdUnidadMedida" Type="Int32" Nullable="false" />
+          <Property Name="VerificaDisponible" Type="Boolean" Nullable="false" />
+          <Property Name="Descuento" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Utilidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_Productos_Categorias" FromRole="Productos" ToRole="Categorias" />
+          <NavigationProperty Name="Existencias" Relationship="Self.FK_Existencias_Productos" FromRole="Productos" ToRole="Existencias" />
+          <NavigationProperty Name="DetalleVentas" Relationship="Self.FK_DetalleVentas_Productos" FromRole="Productos" ToRole="DetalleVentas" />
+          <NavigationProperty Name="Proveedore" Relationship="Self.FK_Productos_Proveedores" FromRole="Productos" ToRole="Proveedores" />
+          <NavigationProperty Name="UnidadesMedida" Relationship="Self.FK_Productos_UnidadesMedida" FromRole="Productos" ToRole="UnidadesMedida" />
+        </EntityType>
+        <EntityType Name="UnidadesMedida">
+          <Key>
+            <PropertyRef Name="IdUnidadMedida" />
+          </Key>
+          <Property Name="IdUnidadMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreCorto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_UnidadesMedida" FromRole="UnidadesMedida" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Proveedore">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Proveedores" FromRole="Proveedores" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Caja">
+          <Key>
+            <PropertyRef Name="IdCaja" />
+          </Key>
+          <Property Name="IdCaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Consecutivo" Type="Int32" Nullable="false" />
+          <Property Name="UsaConsecutivoGlobal" Type="Boolean" Nullable="false" />
+          <Property Name="GuardadoAutomatico" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Cajas_Usuarios" FromRole="Cajas" ToRole="Usuarios" />
+          <NavigationProperty Name="PagosCajas" Relationship="Self.FK_PagosCajas_Cajas" FromRole="Cajas" ToRole="PagosCajas" />
+          <NavigationProperty Name="SaldoCajas" Relationship="Self.FK_SaldoCajas_Cajas" FromRole="Cajas" ToRole="SaldoCajas" />
+          <NavigationProperty Name="Ventas" Relationship="Self.FK_Ventas_Cajas" FromRole="Cajas" ToRole="Ventas" />
+        </EntityType>
+        <EntityType Name="DetalleVenta">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdVenta" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Impuestos" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Descuento" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalLinea" Type="Decimal" Precision="38" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_DetalleVentas_Productos" FromRole="DetalleVentas" ToRole="Productos" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK_DetalleVentas_Ventas" FromRole="DetalleVentas" ToRole="Ventas" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="IdPago" />
+          </Key>
+          <Property Name="IdPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsecutivoVentas" Type="Int32" Nullable="false" />
+          <Property Name="IdCaja" Type="Int32" Nullable="false" />
+          <Property Name="FormaPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
+          <Property Name="IdBanco" Type="Int32" Nullable="false" />
+          <Property Name="IdTarjeta" Type="Int32" Nullable="false" />
+          <Property Name="NumeroChequeTarjeta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MontoRecibido" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MontoAplicado" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PagosCaja">
+          <Key>
+            <PropertyRef Name="IdPagoCaja" />
+          </Key>
+          <Property Name="IdCaja" Type="Int32" Nullable="false" />
+          <Property Name="FormaPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdPagoCaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Caja" Relationship="Self.FK_PagosCajas_Cajas" FromRole="PagosCajas" ToRole="Cajas" />
+        </EntityType>
+        <EntityType Name="ParametrosVenta">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Name="IdParametro" Type="Int32" Nullable="false" />
+          <Property Name="ConsecutivoGlobalFacturas" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SaldoCaja">
+          <Key>
+            <PropertyRef Name="IdSaldoCaja" />
+          </Key>
+          <Property Name="IdSaldoCaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCaja" Type="Int32" Nullable="false" />
+          <Property Name="SaldoEfectivo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SaldoDocumentos" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MontoInicial" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Caja" Relationship="Self.FK_SaldoCajas_Cajas" FromRole="SaldoCajas" ToRole="Cajas" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Consecutivo" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="TotalVenta" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IdCaja" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="TotalImpuestos" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalDescuentos" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Ventas_Clientes" FromRole="Ventas" ToRole="Clientes" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Ventas_Usuarios" FromRole="Ventas" ToRole="Usuarios" />
+          <NavigationProperty Name="Caja" Relationship="Self.FK_Ventas_Cajas" FromRole="Ventas" ToRole="Cajas" />
+          <NavigationProperty Name="DetalleVentas" Relationship="Self.FK_DetalleVentas_Ventas" FromRole="Ventas" ToRole="DetalleVentas" />
+        </EntityType>
+        <Association Name="FK_Clientes_FrecuenciasPago">
+          <End Role="FrecuenciasPago" Type="Self.FrecuenciasPago" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FrecuenciasPago">
+              <PropertyRef Name="IdFrecuenciaPago" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="IdFrecuenciaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creditos_Clientes">
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Creditos" Type="Self.Credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Creditos">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ventas_Clientes">
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Ventas" Type="Self.Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creditos_LineasCredito">
+          <End Role="LineasCredito" Type="Self.LineasCredito" Multiplicity="1" />
+          <End Role="Creditos" Type="Self.Credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LineasCredito">
+              <PropertyRef Name="IdLineaCredito" />
+            </Principal>
+            <Dependent Role="Creditos">
+              <PropertyRef Name="IdLinea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Creditos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Creditos" Type="Self.Credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Creditos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cajas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Cajas" Type="Self.Caja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Cajas">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ventas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Ventas" Type="Self.Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Categorias">
+          <End Role="Categorias" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Existencias_Productos">
+          <End Role="Productos" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Existencias" Type="Self.Existencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Existencias">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleVentas_Productos">
+          <End Role="Productos" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetalleVentas" Type="Self.DetalleVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DetalleVentas">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedore" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_UnidadesMedida">
+          <End Role="UnidadesMedida" Type="Self.UnidadesMedida" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadesMedida">
+              <PropertyRef Name="IdUnidadMedida" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="IdUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagosCajas_Cajas">
+          <End Role="Cajas" Type="Self.Caja" Multiplicity="1" />
+          <End Role="PagosCajas" Type="Self.PagosCaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cajas">
+              <PropertyRef Name="IdCaja" />
+            </Principal>
+            <Dependent Role="PagosCajas">
+              <PropertyRef Name="IdCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaldoCajas_Cajas">
+          <End Role="Cajas" Type="Self.Caja" Multiplicity="1" />
+          <End Role="SaldoCajas" Type="Self.SaldoCaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cajas">
+              <PropertyRef Name="IdCaja" />
+            </Principal>
+            <Dependent Role="SaldoCajas">
+              <PropertyRef Name="IdCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ventas_Cajas">
+          <End Role="Cajas" Type="Self.Caja" Multiplicity="1" />
+          <End Role="Ventas" Type="Self.Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cajas">
+              <PropertyRef Name="IdCaja" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="IdCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleVentas_Ventas">
+          <End Role="Ventas" Type="Self.Venta" Multiplicity="1" />
+          <End Role="DetalleVentas" Type="Self.DetalleVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ventas">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="DetalleVentas">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ControlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bancos" EntityType="Self.Banco" />
+          <EntitySet Name="Tarjetas" EntityType="Self.Tarjeta" />
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Creditos" EntityType="Self.Credito" />
+          <EntitySet Name="FrecuenciasPagoes" EntityType="Self.FrecuenciasPago" />
+          <EntitySet Name="LineasCreditoes" EntityType="Self.LineasCredito" />
+          <EntitySet Name="Bitacoras" EntityType="Self.Bitacora" />
+          <EntitySet Name="NumericTypes" EntityType="Self.NumericType" />
+          <EntitySet Name="ParametrosGenerals" EntityType="Self.ParametrosGeneral" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+          <EntitySet Name="Existencias" EntityType="Self.Existencia" />
+          <EntitySet Name="Productos" EntityType="Self.Producto" />
+          <EntitySet Name="UnidadesMedidas" EntityType="Self.UnidadesMedida" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedore" />
+          <EntitySet Name="Cajas" EntityType="Self.Caja" />
+          <EntitySet Name="DetalleVentas" EntityType="Self.DetalleVenta" />
+          <EntitySet Name="Pagos" EntityType="Self.Pago" />
+          <EntitySet Name="PagosCajas" EntityType="Self.PagosCaja" />
+          <EntitySet Name="ParametrosVentas" EntityType="Self.ParametrosVenta" />
+          <EntitySet Name="SaldoCajas" EntityType="Self.SaldoCaja" />
+          <EntitySet Name="Ventas" EntityType="Self.Venta" />
+          <AssociationSet Name="FK_Clientes_FrecuenciasPago" Association="Self.FK_Clientes_FrecuenciasPago">
+            <End Role="FrecuenciasPago" EntitySet="FrecuenciasPagoes" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creditos_Clientes" Association="Self.FK_Creditos_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Creditos" EntitySet="Creditos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ventas_Clientes" Association="Self.FK_Ventas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creditos_LineasCredito" Association="Self.FK_Creditos_LineasCredito">
+            <End Role="LineasCredito" EntitySet="LineasCreditoes" />
+            <End Role="Creditos" EntitySet="Creditos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Creditos_Usuarios" Association="Self.FK_Creditos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Creditos" EntitySet="Creditos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cajas_Usuarios" Association="Self.FK_Cajas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Cajas" EntitySet="Cajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ventas_Usuarios" Association="Self.FK_Ventas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Categorias" Association="Self.FK_Productos_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Existencias_Productos" Association="Self.FK_Existencias_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Existencias" EntitySet="Existencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVentas_Productos" Association="Self.FK_DetalleVentas_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="DetalleVentas" EntitySet="DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Proveedores" Association="Self.FK_Productos_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_UnidadesMedida" Association="Self.FK_Productos_UnidadesMedida">
+            <End Role="UnidadesMedida" EntitySet="UnidadesMedidas" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagosCajas_Cajas" Association="Self.FK_PagosCajas_Cajas">
+            <End Role="Cajas" EntitySet="Cajas" />
+            <End Role="PagosCajas" EntitySet="PagosCajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaldoCajas_Cajas" Association="Self.FK_SaldoCajas_Cajas">
+            <End Role="Cajas" EntitySet="Cajas" />
+            <End Role="SaldoCajas" EntitySet="SaldoCajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ventas_Cajas" Association="Self.FK_Ventas_Cajas">
+            <End Role="Cajas" EntitySet="Cajas" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVentas_Ventas" Association="Self.FK_DetalleVentas_Ventas">
+            <End Role="Ventas" EntitySet="Ventas" />
+            <End Role="DetalleVentas" EntitySet="DetalleVentas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ControlModelStoreContainer" CdmEntityContainer="ControlEntities">
+          <EntitySetMapping Name="Bancos">
+            <EntityTypeMapping TypeName="ControlModel.Banco">
+              <MappingFragment StoreEntitySet="Bancos">
+                <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Apartado" ColumnName="Apartado" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarjetas">
+            <EntityTypeMapping TypeName="ControlModel.Tarjeta">
+              <MappingFragment StoreEntitySet="Tarjetas">
+                <ScalarProperty Name="IdTarjeta" ColumnName="IdTarjeta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="ControlModel.Cliente">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Contado" ColumnName="Contado" />
+                <ScalarProperty Name="MontoMaximo" ColumnName="MontoMaximo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdFrecuenciaPago" ColumnName="IdFrecuenciaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Creditos">
+            <EntityTypeMapping TypeName="ControlModel.Credito">
+              <MappingFragment StoreEntitySet="Creditos">
+                <ScalarProperty Name="IdCredito" ColumnName="IdCredito" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+                <ScalarProperty Name="Cuota" ColumnName="Cuota" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+                <ScalarProperty Name="MontoInicial" ColumnName="MontoInicial" />
+                <ScalarProperty Name="SaldoActual" ColumnName="SaldoActual" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="FechaProximoPago" ColumnName="FechaProximoPago" />
+                <ScalarProperty Name="FechaUltimoPago" ColumnName="FechaUltimoPago" />
+                <ScalarProperty Name="FechaUltimoAbono" ColumnName="FechaUltimoAbono" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FrecuenciasPagoes">
+            <EntityTypeMapping TypeName="ControlModel.FrecuenciasPago">
+              <MappingFragment StoreEntitySet="FrecuenciasPago">
+                <ScalarProperty Name="IdFrecuenciaPago" ColumnName="IdFrecuenciaPago" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="DiasPorYear" ColumnName="DiasPorYear" />
+                <ScalarProperty Name="DiasPorPeriodo" ColumnName="DiasPorPeriodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LineasCreditoes">
+            <EntityTypeMapping TypeName="ControlModel.LineasCredito">
+              <MappingFragment StoreEntitySet="LineasCredito">
+                <ScalarProperty Name="IdLineaCredito" ColumnName="IdLineaCredito" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+                <ScalarProperty Name="TasaMora" ColumnName="TasaMora" />
+                <ScalarProperty Name="DiasMora" ColumnName="DiasMora" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+                <ScalarProperty Name="Refunde" ColumnName="Refunde" />
+                <ScalarProperty Name="Cuotas" ColumnName="Cuotas" />
+                <ScalarProperty Name="MontoMaximo" ColumnName="MontoMaximo" />
+                <ScalarProperty Name="PlazoMaximo" ColumnName="PlazoMaximo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bitacoras">
+            <EntityTypeMapping TypeName="ControlModel.Bitacora">
+              <MappingFragment StoreEntitySet="Bitacora">
+                <ScalarProperty Name="IdBitacora" ColumnName="IdBitacora" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NumericTypes">
+            <EntityTypeMapping TypeName="ControlModel.NumericType">
+              <MappingFragment StoreEntitySet="NumericTypes">
+                <ScalarProperty Name="int" ColumnName="int" />
+                <ScalarProperty Name="numeric" ColumnName="numeric" />
+                <ScalarProperty Name="decimal" ColumnName="decimal" />
+                <ScalarProperty Name="float" ColumnName="float" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="real" ColumnName="real" />
+                <ScalarProperty Name="numericN" ColumnName="numericN" />
+                <ScalarProperty Name="decimalN" ColumnName="decimalN" />
+                <ScalarProperty Name="floatN" ColumnName="floatN" />
+                <ScalarProperty Name="moneyN" ColumnName="moneyN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParametrosGenerals">
+            <EntityTypeMapping TypeName="ControlModel.ParametrosGeneral">
+              <MappingFragment StoreEntitySet="ParametrosGeneral">
+                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+                <ScalarProperty Name="Redondeo" ColumnName="Redondeo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="ControlModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Administrador" ColumnName="Administrador" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Mantenimientos" ColumnName="Mantenimientos" />
+                <ScalarProperty Name="Procesos" ColumnName="Procesos" />
+                <ScalarProperty Name="Reportes" ColumnName="Reportes" />
+                <ScalarProperty Name="Otros" ColumnName="Otros" />
+                <ScalarProperty Name="Consultas" ColumnName="Consultas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="ControlModel.Categoria">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Existencias">
+            <EntityTypeMapping TypeName="ControlModel.Existencia">
+              <MappingFragment StoreEntitySet="Existencias">
+                <ScalarProperty Name="IdExistencia" ColumnName="IdExistencia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="ControlModel.Producto">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Minimo" ColumnName="Minimo" />
+                <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+                <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
+                <ScalarProperty Name="VerificaDisponible" ColumnName="VerificaDisponible" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Utilidad" ColumnName="Utilidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadesMedidas">
+            <EntityTypeMapping TypeName="ControlModel.UnidadesMedida">
+              <MappingFragment StoreEntitySet="UnidadesMedida">
+                <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="ControlModel.Proveedore">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cajas">
+            <EntityTypeMapping TypeName="ControlModel.Caja">
+              <MappingFragment StoreEntitySet="Cajas">
+                <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="UsaConsecutivoGlobal" ColumnName="UsaConsecutivoGlobal" />
+                <ScalarProperty Name="GuardadoAutomatico" ColumnName="GuardadoAutomatico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleVentas">
+            <EntityTypeMapping TypeName="ControlModel.DetalleVenta">
+              <MappingFragment StoreEntitySet="DetalleVentas">
+                <ScalarProperty Name="IdDetalle" ColumnName="IdDetalle" />
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="TotalLinea" ColumnName="TotalLinea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagos">
+            <EntityTypeMapping TypeName="ControlModel.Pago">
+              <MappingFragment StoreEntitySet="Pagos">
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+                <ScalarProperty Name="ConsecutivoVentas" ColumnName="ConsecutivoVentas" />
+                <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
+                <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+                <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+                <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
+                <ScalarProperty Name="IdTarjeta" ColumnName="IdTarjeta" />
+                <ScalarProperty Name="NumeroChequeTarjeta" ColumnName="NumeroChequeTarjeta" />
+                <ScalarProperty Name="MontoRecibido" ColumnName="MontoRecibido" />
+                <ScalarProperty Name="MontoAplicado" ColumnName="MontoAplicado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagosCajas">
+            <EntityTypeMapping TypeName="ControlModel.PagosCaja">
+              <MappingFragment StoreEntitySet="PagosCajas">
+                <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
+                <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+                <ScalarProperty Name="IdPagoCaja" ColumnName="IdPagoCaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParametrosVentas">
+            <EntityTypeMapping TypeName="ControlModel.ParametrosVenta">
+              <MappingFragment StoreEntitySet="ParametrosVentas">
+                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+                <ScalarProperty Name="ConsecutivoGlobalFacturas" ColumnName="ConsecutivoGlobalFacturas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaldoCajas">
+            <EntityTypeMapping TypeName="ControlModel.SaldoCaja">
+              <MappingFragment StoreEntitySet="SaldoCajas">
+                <ScalarProperty Name="IdSaldoCaja" ColumnName="IdSaldoCaja" />
+                <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
+                <ScalarProperty Name="SaldoEfectivo" ColumnName="SaldoEfectivo" />
+                <ScalarProperty Name="SaldoDocumentos" ColumnName="SaldoDocumentos" />
+                <ScalarProperty Name="MontoInicial" ColumnName="MontoInicial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventas">
+            <EntityTypeMapping TypeName="ControlModel.Venta">
+              <MappingFragment StoreEntitySet="Ventas">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="TotalVenta" ColumnName="TotalVenta" />
+                <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="TotalImpuestos" ColumnName="TotalImpuestos" />
+                <ScalarProperty Name="TotalDescuentos" ColumnName="TotalDescuentos" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

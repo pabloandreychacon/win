@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D2FDB4D-8382-4FBA-B0DE-9167F1D9483F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ControlApp</RootNamespace>
+    <AssemblyName>ControlApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BaseControls">
+      <HintPath>..\..\Base\BaseControls\bin\Debug\BaseControls.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseForms">
+      <HintPath>..\..\Base\BaseForms\bin\Debug\BaseForms.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseHelpers">
+      <HintPath>..\..\Base\BaseHelpers\bin\Debug\BaseHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Presentation\Forms\Consultas\ExistenciasConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Consultas\ExistenciasConsulta.Designer.cs">
+      <DependentUpon>ExistenciasConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Consultas\Ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Consultas\Ventas.Designer.cs">
+      <DependentUpon>Ventas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Bancos\BancosMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Bancos\BancosMantenimiento.Designer.cs">
+      <DependentUpon>BancosMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Bancos\TarjetasMant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Bancos\TarjetasMant.Designer.cs">
+      <DependentUpon>TarjetasMant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Credito\ClientesMant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Credito\ClientesMant.Designer.cs">
+      <DependentUpon>ClientesMant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Credito\FrecuenciasPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Credito\FrecuenciasPago.Designer.cs">
+      <DependentUpon>FrecuenciasPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Credito\LineasCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Credito\LineasCredito.Designer.cs">
+      <DependentUpon>LineasCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\General\BusinessConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\General\BusinessConfig.Designer.cs">
+      <DependentUpon>BusinessConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\General\ParametrosGenerales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\General\ParametrosGenerales.Designer.cs">
+      <DependentUpon>ParametrosGenerales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\General\UsuariosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\General\UsuariosForm.Designer.cs">
+      <DependentUpon>UsuariosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Inventario\CategoriasForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Inventario\CategoriasForms.Designer.cs">
+      <DependentUpon>CategoriasForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Inventario\ProductosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Inventario\ProductosForm.Designer.cs">
+      <DependentUpon>ProductosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Inventario\UnidadesMedidaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Inventario\UnidadesMedidaForm.Designer.cs">
+      <DependentUpon>UnidadesMedidaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Proveeduria\ProveedoresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Proveeduria\ProveedoresForm.Designer.cs">
+      <DependentUpon>ProveedoresForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Ventas\CajasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Ventas\CajasForm.Designer.cs">
+      <DependentUpon>CajasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Ventas\ParametrosVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\Ventas\ParametrosVentas.Designer.cs">
+      <DependentUpon>ParametrosVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\AjusteInventarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\AjusteInventarioForm.Designer.cs">
+      <DependentUpon>AjusteInventarioForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\AjusteLinea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\AjusteLinea.Designer.cs">
+      <DependentUpon>AjusteLinea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\AnulacionFacturasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\AnulacionFacturasForm.Designer.cs">
+      <DependentUpon>AnulacionFacturasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\CobrarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\CobrarForm.Designer.cs">
+      <DependentUpon>CobrarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\NotaDebitoCreditoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\NotaDebitoCreditoForm.Designer.cs">
+      <DependentUpon>NotaDebitoCreditoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\PagosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\PagosForm.Designer.cs">
+      <DependentUpon>PagosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\PuntoVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Procesos\PuntoVenta.Designer.cs">
+      <DependentUpon>PuntoVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Reportes\Ventas\VentasReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Reportes\Ventas\VentasReport.Designer.cs">
+      <DependentUpon>VentasReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\BindTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\BindTest.Designer.cs">
+      <DependentUpon>BindTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\test2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\test2.Designer.cs">
+      <DependentUpon>test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\test3StoredProc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\test3StoredProc.Designer.cs">
+      <DependentUpon>test3StoredProc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\TestCodeFirstBindingForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\TestCodeFirstBindingForms.Designer.cs">
+      <DependentUpon>TestCodeFirstBindingForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\tests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Tests\tests.Designer.cs">
+      <DependentUpon>tests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Reports\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Reports\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation\Forms\Consultas\ExistenciasConsulta.resx">
+      <DependentUpon>ExistenciasConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Consultas\Ventas.resx">
+      <DependentUpon>Ventas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Bancos\BancosMantenimiento.resx">
+      <DependentUpon>BancosMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Bancos\TarjetasMant.resx">
+      <DependentUpon>TarjetasMant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Credito\ClientesMant.resx">
+      <DependentUpon>ClientesMant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Credito\FrecuenciasPago.resx">
+      <DependentUpon>FrecuenciasPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Credito\LineasCredito.resx">
+      <DependentUpon>LineasCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\General\BusinessConfig.resx">
+      <DependentUpon>BusinessConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\General\ParametrosGenerales.resx">
+      <DependentUpon>ParametrosGenerales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\General\UsuariosForm.resx">
+      <DependentUpon>UsuariosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Inventario\CategoriasForms.resx">
+      <DependentUpon>CategoriasForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Inventario\ProductosForm.resx">
+      <DependentUpon>ProductosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Inventario\UnidadesMedidaForm.resx">
+      <DependentUpon>UnidadesMedidaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Proveeduria\ProveedoresForm.resx">
+      <DependentUpon>ProveedoresForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Ventas\CajasForm.resx">
+      <DependentUpon>CajasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\Ventas\ParametrosVentas.resx">
+      <DependentUpon>ParametrosVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Procesos\AjusteInventarioForm.resx">
+      <DependentUpon>AjusteInventarioForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Procesos\AjusteLinea.resx">
+      <DependentUpon>AjusteLinea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Procesos\AnulacionFacturasForm.resx">
+      <DependentUpon>AnulacionFacturasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Procesos\CobrarForm.resx">
+      <DependentUpon>CobrarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Procesos\NotaDebitoCreditoForm.resx">
+      <DependentUpon>NotaDebitoCreditoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Procesos\PagosForm.resx">
+      <DependentUpon>PagosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Procesos\PuntoVenta.resx">
+      <DependentUpon>PuntoVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Reportes\Ventas\VentasReport.resx">
+      <DependentUpon>VentasReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Tests\BindTest.resx">
+      <DependentUpon>BindTest.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Tests\test2.resx">
+      <DependentUpon>test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Tests\test3StoredProc.resx">
+      <DependentUpon>test3StoredProc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Tests\TestCodeFirstBindingForms.resx">
+      <DependentUpon>TestCodeFirstBindingForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Tests\tests.resx">
+      <DependentUpon>tests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Reports\General\Usuarios.rdlc" />
+    <EmbeddedResource Include="Presentation\Reports\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Usuarios.rdlc" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Banco.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Bitacora.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Caja.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Categoria.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Cliente.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Credito.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.DetalleVenta.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Existencia.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.FrecuenciasPago.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.LineasCredito.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.NumericType.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Pago.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.PagosCaja.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.ParametrosGeneral.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.ParametrosVenta.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Producto.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Proveedore.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.SaldoCaja.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Tarjeta.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.UnidadesMedida.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Usuario.datasource" />
+    <None Include="Properties\DataSources\ControlData.EntitiesModel.Venta.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControlBusiness\ControlBusiness.csproj">
+      <Project>{0393e696-3d6b-488b-b733-54a8afb2bb44}</Project>
+      <Name>ControlBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlEntity\ControlEntity.csproj">
+      <Project>{f9813db1-a4f6-4dea-bdf6-5d8603f1aa98}</Project>
+      <Name>ControlEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Presentation\Reports\Ventas\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

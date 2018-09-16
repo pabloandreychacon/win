@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlData", "ControlData\ControlData.csproj", "{29521359-A67E-4FF5-905A-E4147B28BA85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTests", "ControlTests\ControlTests.csproj", "{C8EC4365-AB2E-4CBD-80B1-13B02FD46E43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlConsole", "ControlConsole\ControlConsole.csproj", "{4C23A867-666E-405D-B744-3C91EE46C2D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlApp", "ControlApp\ControlApp.csproj", "{4D2FDB4D-8382-4FBA-B0DE-9167F1D9483F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlBusiness", "ControlBusiness\ControlBusiness.csproj", "{0393E696-3D6B-488B-B733-54A8AFB2BB44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlEntity", "ControlEntity\ControlEntity.csproj", "{F9813DB1-A4F6-4DEA-BDF6-5D8603F1AA98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportTest", "ReportTest\ReportTest.csproj", "{7C1F52DA-5B11-4DB3-A0E9-5D24B1F17D80}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://pabloandreychacon.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ControlApp\\ControlApp.csproj
+		SccProjectName1 = ControlApp
+		SccLocalPath1 = ControlApp
+		SccProjectUniqueName2 = ControlBusiness\\ControlBusiness.csproj
+		SccProjectName2 = ControlBusiness
+		SccLocalPath2 = ControlBusiness
+		SccProjectUniqueName3 = ControlConsole\\ControlConsole.csproj
+		SccProjectName3 = ControlConsole
+		SccLocalPath3 = ControlConsole
+		SccProjectUniqueName4 = ControlData\\ControlData.csproj
+		SccProjectName4 = ControlData
+		SccLocalPath4 = ControlData
+		SccProjectUniqueName5 = ControlEntity\\ControlEntity.csproj
+		SccProjectName5 = ControlEntity
+		SccLocalPath5 = ControlEntity
+		SccProjectUniqueName6 = ControlTests\\ControlTests.csproj
+		SccProjectName6 = ControlTests
+		SccLocalPath6 = ControlTests
+		SccProjectUniqueName7 = ReportTest\\ReportTest.csproj
+		SccProjectName7 = ReportTest
+		SccLocalPath7 = ReportTest
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29521359-A67E-4FF5-905A-E4147B28BA85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29521359-A67E-4FF5-905A-E4147B28BA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29521359-A67E-4FF5-905A-E4147B28BA85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29521359-A67E-4FF5-905A-E4147B28BA85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8EC4365-AB2E-4CBD-80B1-13B02FD46E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8EC4365-AB2E-4CBD-80B1-13B02FD46E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8EC4365-AB2E-4CBD-80B1-13B02FD46E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8EC4365-AB2E-4CBD-80B1-13B02FD46E43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C23A867-666E-405D-B744-3C91EE46C2D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C23A867-666E-405D-B744-3C91EE46C2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C23A867-666E-405D-B744-3C91EE46C2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C23A867-666E-405D-B744-3C91EE46C2D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D2FDB4D-8382-4FBA-B0DE-9167F1D9483F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D2FDB4D-8382-4FBA-B0DE-9167F1D9483F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D2FDB4D-8382-4FBA-B0DE-9167F1D9483F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D2FDB4D-8382-4FBA-B0DE-9167F1D9483F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0393E696-3D6B-488B-B733-54A8AFB2BB44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0393E696-3D6B-488B-B733-54A8AFB2BB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0393E696-3D6B-488B-B733-54A8AFB2BB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0393E696-3D6B-488B-B733-54A8AFB2BB44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9813DB1-A4F6-4DEA-BDF6-5D8603F1AA98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9813DB1-A4F6-4DEA-BDF6-5D8603F1AA98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9813DB1-A4F6-4DEA-BDF6-5D8603F1AA98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9813DB1-A4F6-4DEA-BDF6-5D8603F1AA98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C1F52DA-5B11-4DB3-A0E9-5D24B1F17D80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C1F52DA-5B11-4DB3-A0E9-5D24B1F17D80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C1F52DA-5B11-4DB3-A0E9-5D24B1F17D80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C1F52DA-5B11-4DB3-A0E9-5D24B1F17D80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
